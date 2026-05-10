@@ -3,8 +3,6 @@ import pandas as pd
 
 from sqlalchemy import text
 
-from portfolio.helper import sharpe_ratio
-
 
 class PortfolioStrategy:
 
@@ -126,10 +124,10 @@ class PortfolioStrategy:
 
         cumulative_return = np.prod(1 + r) - 1
 
-        self.metrics = {
-            "sharpe": sharpe,
-            "volatility": volatility,
-            "cumulative_return": cumulative_return,
+        self.metrics = { # serialize as native python float
+            "sharpe": float(sharpe),
+            "volatility": float(volatility),
+            "cumulative_return": float(cumulative_return),
         }
 
         return self.metrics

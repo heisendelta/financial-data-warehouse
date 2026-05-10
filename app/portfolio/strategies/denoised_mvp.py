@@ -1,5 +1,5 @@
-from portfolio.base import PortfolioStrategy
-from portfolio.helper import estimate_cov, denoise_cov, opt_port
+from app.portfolio.base import PortfolioStrategy
+from app.portfolio.helper import estimate_cov, denoise_cov, opt_port
 
 class DenoisedMVP(PortfolioStrategy):
 

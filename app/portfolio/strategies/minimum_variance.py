@@ -1,5 +1,5 @@
-from portfolio.base import PortfolioStrategy
-from portfolio.helper import opt_port
+from app.portfolio.base import PortfolioStrategy
+from app.portfolio.helper import opt_port
 
 
 class MinimumVariancePortfolio(PortfolioStrategy):

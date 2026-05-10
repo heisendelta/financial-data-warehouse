@@ -1,6 +1,6 @@
 import numpy as np
 
-from portfolio.base import PortfolioStrategy
+from app.portfolio.base import PortfolioStrategy
 
 
 class EqualWeightPortfolio(PortfolioStrategy):
