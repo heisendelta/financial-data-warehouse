@@ -6,12 +6,21 @@ DATABASE_URL = (
 )
 engine = create_engine(DATABASE_URL)
 
-ticker = 'AAPL'
+df = pd.read_csv(f'data/raw/all_prices.csv')
+# df = df.iloc[2:] # get rid of multiindex columns
 
-df = pd.read_csv(f'data/raw/{ticker.lower()}.csv')
-df = df.iloc[2:] # get rid of multiindex columns
-df.columns = ['trade_date', 'close', 'high', 'low', 'open', 'volume']
+df = df.rename(columns={
+    "Date": "trade_date",
+    "Open": "open",
+    "High": "high",
+    "Low": "low",
+    "Close": "close",
+    "Volume": "volume"
+})
 
+df = df[[ "ticker", "trade_date", "open", "high", "low", "close", "volume" ]]
+
+print(df.head())
 
 df.to_sql(
     'raw_prices',
@@ -20,4 +29,4 @@ df.to_sql(
     index=False
 )
 
-print(f'Loaded data of [{ticker}] into raw_prices.')
+print(f'Loaded data of all_prices.csv into raw_prices.')
